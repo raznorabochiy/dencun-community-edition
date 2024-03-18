@@ -1,11 +1,21 @@
 import cli from "cli";
 import { Wallet } from "ethers";
 import random from "lodash/random";
-import { DELAY_FROM_SEC, DELAY_TO_SEC, KEYS_FILENAME } from "./constants";
+import shuffle from "lodash/shuffle";
+import {
+  DELAY_FROM_SEC,
+  DELAY_TO_SEC,
+  KEYS_FILENAME,
+  SHUFFLE_KEYS,
+} from "./constants";
 import { getPurchaseData, mint } from "./mint";
 import { delayProgress, loadFromFile, waitGas } from "./utils";
 
-const keys = await loadFromFile(KEYS_FILENAME);
+let keys = await loadFromFile(KEYS_FILENAME);
+
+if (SHUFFLE_KEYS) {
+  keys = shuffle(keys);
+}
 
 for (const key of keys) {
   const { address } = new Wallet(key);

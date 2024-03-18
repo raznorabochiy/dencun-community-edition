@@ -6,6 +6,9 @@ export const DELAY_TO_SEC = 20;
 
 export const MAX_GAS_GWEI = 60;
 
+// Перемешивать ключи, чтобы запускать аккаунты в случайном порядке
+export const SHUFFLE_KEYS = false;
+
 export const CONTRACT_ADDRESS = "0x9F44028C2F8959a5b15776e2FD936D5DC141B554";
 
 export const CONTRACT_ABI = [
